@@ -12,9 +12,13 @@ import UIKit
 class GameScene: SKScene {
     var movingGround : MovingGround!
     var movingBackground : MovingBackground!
+    var movingMidGround : MovingMidground!
+    var movingForeground : MovingForeground!
     
     var movingGroundTexture = SKTexture(imageNamed: "MovingGround")
     var MovingBackgroundTexture = SKTexture(imageNamed: "MovingBackground")
+    let MovingMidgroundTexture = SKTexture(imageNamed: "MovingMidground")
+    let MovingForegroundTexture = SKTexture(imageNamed: "MovingForeground")
     
     var skyColor = UIColor(red: 133.0/255.0, green: 197.0/255.0, blue: 207.0/255.0, alpha: 1.0)
     var moving = SKNode()
@@ -32,6 +36,13 @@ class GameScene: SKScene {
         movingBackground = MovingBackground(size: CGSize(width: MovingBackgroundTexture.size().width, height: MovingBackgroundTexture.size().height))
         moving.addChild(movingBackground)
         
+        //call an instance of the MovingMidground class
+        movingMidGround = MovingMidground(size: CGSize(width: MovingMidgroundTexture.size().width, height: MovingMidgroundTexture.size().height))
+        moving.addChild(movingMidGround)
+        
+        //call an instance of the movingforeground class
+        movingForeground = MovingForeground(size: CGSize(width: MovingForegroundTexture.size().width, height: MovingForegroundTexture.size().height))
+        moving.addChild(movingForeground)
     }
     
     
@@ -47,8 +58,9 @@ class GameScene: SKScene {
     func addStuffTotheScene(){
         if (alreadyAddedToTheScene == false){
             movingGround.begin()
-            
             movingBackground.begin()
+            movingMidGround.begin()
+            movingForeground.begin()
         }
     }
 }
